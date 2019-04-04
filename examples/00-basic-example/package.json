@@ -1,0 +1,33 @@
+{
+  "name": "examples-00-basic-example",
+  "private": true,
+  "version": "1.0.0",
+  "description": "React implementation to easify using lc-form-validation",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@lemoncode/react-form-validation": "file:../../",
+    "@material-ui/core": "^3.9.3",
+    "lc-form-validation": "^2.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/react": "^16.8.12",
+    "@types/react-dom": "^16.8.3",
+    "babel-loader": "^8.0.5",
+    "core-js": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "typescript": "^3.4.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
