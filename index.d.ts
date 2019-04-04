@@ -5,9 +5,18 @@
  * @param initEntity: initial value for entity to validate
  * @param initEntityError: initial value for errors
  */
+import {
+  FieldValidationResult,
+  FormValidationResult,
+} from 'lc-form-validation';
 
 export function useValidation<EntityProps, EntityErrorProps>(
   validation: FormValidation,
   initEntity: EntityProps,
   initEntityError: EntityErrorProps
-): [EntityProps, EntityErrorProps, OnUpdateFieldFn, OnUpdateFormFn];
+): [
+  EntityProps,
+  EntityErrorProps,
+  (field: string, value) => Promise<FieldValidationResult>,
+  () => Promise<FormValidationResult>
+];
