@@ -30,7 +30,7 @@ export const App = () => {
   };
 
   return (
-    <Card title="Login">
+    <Card title="Login: (admin / test)">
       <Form
         login={login}
         loginError={loginError}

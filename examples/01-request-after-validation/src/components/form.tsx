@@ -38,7 +38,7 @@ export const Form: React.StatelessComponent<Props> = ({
       onChange={onUpdateField}
       error={loginError.password.errorMessage}
     />
-    <Button variant="contained" color="primary" onClick={onLogin}>
+    <Button variant="contained" color="primary" type="submit" onClick={onLogin}>
       Login
     </Button>
   </div>
