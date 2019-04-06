@@ -3,9 +3,14 @@ import {
   FormValidation,
   FieldValidationResult,
   FormValidationResult,
+  ValidationEventsFilter,
 } from 'lc-form-validation';
 
-type OnUpdateFieldFn = (field: string, value) => Promise<FieldValidationResult>;
+type OnUpdateFieldFn = (
+  field: string,
+  value,
+  eventsFilter?: ValidationEventsFilter
+) => Promise<FieldValidationResult>;
 type OnUpdateFormFn = () => Promise<FormValidationResult>;
 
 export const useValidation = <EntityProps, EntityErrorProps>(
@@ -16,7 +21,11 @@ export const useValidation = <EntityProps, EntityErrorProps>(
   const [entity, setEntity] = React.useState(initEntity);
   const [entityError, setEntityError] = React.useState(initEntityError);
 
-  const onUpdateField: OnUpdateFieldFn = async (field: string, value) => {
+  const onUpdateField: OnUpdateFieldFn = async (
+    field: string,
+    value,
+    eventsFilter?: ValidationEventsFilter
+  ) => {
     setEntity({
       ...entity,
       [field]: value,
@@ -25,7 +34,8 @@ export const useValidation = <EntityProps, EntityErrorProps>(
     const fieldValidationResult = await validation.validateField(
       entity,
       field,
-      value
+      value,
+      eventsFilter
     );
 
     setEntityError({

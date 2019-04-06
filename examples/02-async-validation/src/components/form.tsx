@@ -7,7 +7,7 @@ import { LoginError } from '../viewModel/login-error';
 interface Props {
   login: Login;
   loginError: LoginError;
-  onUpdateField: (field, value) => void;
+  onUpdateField: (field, value, eventsFilter?) => void;
   onLogin: () => void;
 }
 
@@ -28,6 +28,7 @@ export const Form: React.StatelessComponent<Props> = ({
       label="Name"
       value={login.name}
       onChange={onUpdateField}
+      onBlur={(field, value) => onUpdateField(field, value, { onBlur: true })}
       error={loginError.name.errorMessage}
     />
     <TextFieldForm
@@ -38,7 +39,7 @@ export const Form: React.StatelessComponent<Props> = ({
       onChange={onUpdateField}
       error={loginError.password.errorMessage}
     />
-    <Button variant="contained" color="primary" onClick={onLogin}>
+    <Button variant="contained" color="primary" type="submit" onClick={onLogin}>
       Login
     </Button>
   </div>

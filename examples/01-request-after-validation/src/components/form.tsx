@@ -33,6 +33,7 @@ export const Form: React.StatelessComponent<Props> = ({
     <TextFieldForm
       name="password"
       label="Password"
+      type="password"
       value={login.password}
       onChange={onUpdateField}
       error={loginError.password.errorMessage}
