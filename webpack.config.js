@@ -37,6 +37,7 @@ module.exports = () => {
     externals: {
       'lc-form-validation': 'lc-form-validation',
       react: 'React',
+      'react-dom': 'ReactDOM',
     },
     module: {
       rules: [

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useValidation specs entity error should render component with initial entity error value 1`] = `
+<div>
+  testError prop
+</div>
+`;
+
+exports[`useValidation specs entity should render component with initial entity value 1`] = `
+<div>
+  test prop
+</div>
+`;
