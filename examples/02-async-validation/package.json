@@ -1,5 +1,5 @@
 {
-  "name": "examples-01-request-after-validation",
+  "name": "examples-02-async-validation",
   "private": true,
   "version": "1.0.0",
   "description": "React implementation to easify using lc-form-validation",

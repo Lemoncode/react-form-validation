@@ -4,6 +4,7 @@ import {
   createFormValidation,
   ValidationConstraints,
   Validators,
+  FieldValidationResult,
 } from 'lc-form-validation';
 import { useValidation } from './index';
 
@@ -17,7 +18,7 @@ describe('useValidation specs', () => {
 
       const constraints: ValidationConstraints = {
         fields: {
-          name: [{ validator: Validators.required }],
+          test: [{ validator: Validators.required }],
         },
       };
       const validation = createFormValidation(constraints);
@@ -33,6 +34,7 @@ describe('useValidation specs', () => {
       expect(component).toMatchSnapshot();
     });
   });
+
   describe('entity error', () => {
     it('should render component with initial entity error value', () => {
       // Arrange
@@ -46,7 +48,7 @@ describe('useValidation specs', () => {
 
       const constraints: ValidationConstraints = {
         fields: {
-          name: [{ validator: Validators.required }],
+          test: [{ validator: Validators.required }],
         },
       };
       const validation = createFormValidation(constraints);
@@ -64,6 +66,202 @@ describe('useValidation specs', () => {
 
       // Assert
       expect(component).toMatchSnapshot();
+    });
+  });
+
+  describe('onUpdateField', () => {
+    it('should fail validation when call to to onUpdateField with empty value and required validator', done => {
+      // Arrange
+      const initialEntity = {
+        test: 'init value',
+      };
+
+      const initialEntityError = {
+        test: new FieldValidationResult(),
+      };
+
+      const constraints: ValidationConstraints = {
+        fields: {
+          test: [{ validator: Validators.required }],
+        },
+      };
+      const validation = createFormValidation(constraints);
+      const TestComponent = () => {
+        const [entity, entityError, onUpdateField] = useValidation(
+          validation,
+          initialEntity,
+          initialEntityError
+        );
+        return (
+          <>
+            <input
+              onChange={e => onUpdateField('test', e.target.value)}
+              value={entity.test}
+            />
+            <span>{entityError.test.errorMessage}</span>
+          </>
+        );
+      };
+
+      // Act
+      const component = shallow(<TestComponent />);
+
+      component.find('input').simulate('change', {
+        target: {
+          value: '',
+        },
+      });
+
+      // Assert
+      setImmediate(() => {
+        expect(component).toMatchSnapshot();
+        done();
+      });
+    });
+
+    it('should pass validation when call to to onUpdateField with some value and required validator', done => {
+      // Arrange
+      const initialEntity = {
+        test: '',
+      };
+
+      const initialEntityError = {
+        test: new FieldValidationResult(),
+      };
+
+      const constraints: ValidationConstraints = {
+        fields: {
+          test: [{ validator: Validators.required }],
+        },
+      };
+      const validation = createFormValidation(constraints);
+      const TestComponent = () => {
+        const [entity, entityError, onUpdateField] = useValidation(
+          validation,
+          initialEntity,
+          initialEntityError
+        );
+        return (
+          <>
+            <input
+              onChange={e => onUpdateField('test', e.target.value)}
+              value={entity.test}
+            />
+            <span>{entityError.test.errorMessage}</span>
+          </>
+        );
+      };
+
+      // Act
+      const component = shallow(<TestComponent />);
+
+      component.find('input').simulate('change', {
+        target: {
+          value: 'updated value',
+        },
+      });
+
+      // Assert
+      setImmediate(() => {
+        expect(component).toMatchSnapshot();
+        done();
+      });
+    });
+  });
+
+  describe('onUpdateForm', () => {
+    it('should fail validation when call to to onUpdateForm with empty value and required validator', done => {
+      // Arrange
+      const initialEntity = {
+        test: '',
+      };
+
+      const initialEntityError = {
+        test: new FieldValidationResult(),
+      };
+
+      const constraints: ValidationConstraints = {
+        fields: {
+          test: [{ validator: Validators.required }],
+        },
+      };
+      const validation = createFormValidation(constraints);
+      const TestComponent = () => {
+        const [
+          entity,
+          entityError,
+          onUpdateField,
+          onUpdateForm,
+        ] = useValidation(validation, initialEntity, initialEntityError);
+        return (
+          <>
+            <input
+              onChange={e => onUpdateField('test', e.target.value)}
+              value={entity.test}
+            />
+            <span>{entityError.test.errorMessage}</span>
+            <button onClick={onUpdateForm}>Validate form</button>
+          </>
+        );
+      };
+
+      // Act
+      const component = shallow(<TestComponent />);
+
+      component.find('button').simulate('click');
+
+      // Assert
+      setImmediate(() => {
+        expect(component).toMatchSnapshot();
+        done();
+      });
+    });
+
+    it('should pass validation when call to to onUpdateForm with some value and required validator', done => {
+      // Arrange
+      const initialEntity = {
+        test: 'init value',
+      };
+
+      const initialEntityError = {
+        test: new FieldValidationResult(),
+      };
+
+      const constraints: ValidationConstraints = {
+        fields: {
+          test: [{ validator: Validators.required }],
+        },
+      };
+      const validation = createFormValidation(constraints);
+      const TestComponent = () => {
+        const [
+          entity,
+          entityError,
+          onUpdateField,
+          onUpdateForm,
+        ] = useValidation(validation, initialEntity, initialEntityError);
+        return (
+          <>
+            <input
+              onChange={e => onUpdateField('test', e.target.value)}
+              value={entity.test}
+            />
+            <span>{entityError.test.errorMessage}</span>
+            <button onClick={onUpdateForm}>Validate form</button>
+          </>
+        );
+      };
+
+      // Act
+      const component = shallow(<TestComponent />);
+
+      component.find('button').simulate('click');
+
+      // Assert
+      setImmediate(() => {
+        expect(component).toMatchSnapshot();
+        done();
+      });
     });
   });
 });
