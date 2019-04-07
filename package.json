@@ -44,6 +44,7 @@
     "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development webpack",
     "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production webpack -p",
     "build:copyfiles": "copyfiles package.json index.d.ts readme.md LICENSE dist lib es",
+    "build:perf": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --config=webpack.perf.config.js",
     "test": "cross-env NODE_ENV=test jest --verbose -c ./config/test/jest.json",
     "test:watch": "cross-env NODE_ENV=test jest --verbose -c ./config/test/jest.json --watchAll -i",
     "lint": "tslint --project . --format stylish",
@@ -94,6 +95,8 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "webpack-bundle-analyzer": "^3.2.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1"
   }
 }
