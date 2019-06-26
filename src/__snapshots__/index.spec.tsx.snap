@@ -24,11 +24,29 @@ exports[`useValidation specs onUpdateField should fail validation when call to t
 </Fragment>
 `;
 
+exports[`useValidation specs onUpdateField should fail validation when call to to onUpdateField with empty value and required validator for complex entity 1`] = `
+<Fragment>
+  <input
+    onChange={[Function]}
+  />
+  <span />
+</Fragment>
+`;
+
 exports[`useValidation specs onUpdateField should pass validation when call to to onUpdateField with some value and required validator 1`] = `
 <Fragment>
   <input
     onChange={[Function]}
     value="updated value"
+  />
+  <span />
+</Fragment>
+`;
+
+exports[`useValidation specs onUpdateField should pass validation when call to to onUpdateField with some value and required validator for complex entity 1`] = `
+<Fragment>
+  <input
+    onChange={[Function]}
   />
   <span />
 </Fragment>

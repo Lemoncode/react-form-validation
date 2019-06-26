@@ -5,6 +5,7 @@ import {
   FormValidationResult,
   ValidationEventsFilter,
 } from 'lc-form-validation';
+import set from 'lodash.set';
 
 type OnUpdateFieldFn = (
   field: string,
@@ -26,10 +27,9 @@ export const useValidation = <EntityProps, EntityErrorProps>(
     value,
     eventsFilter?: ValidationEventsFilter
   ) => {
-    setEntity({
-      ...entity,
-      [field]: value,
-    });
+    const newEntity = { ...entity };
+    set(newEntity, field, value);
+    setEntity(newEntity);
 
     const fieldValidationResult = await validation.validateField(
       entity,
