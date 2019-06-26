@@ -69,7 +69,37 @@ exports[`useValidation specs onUpdateForm should fail validation when call to to
 </Fragment>
 `;
 
+exports[`useValidation specs onUpdateForm should fail validation when call to to onUpdateForm with empty value and required validator for complex entity 1`] = `
+<Fragment>
+  <input
+    onChange={[Function]}
+    value=""
+  />
+  <span />
+  <button
+    onClick={[Function]}
+  >
+    Validate form
+  </button>
+</Fragment>
+`;
+
 exports[`useValidation specs onUpdateForm should pass validation when call to to onUpdateForm with some value and required validator 1`] = `
+<Fragment>
+  <input
+    onChange={[Function]}
+    value="init value"
+  />
+  <span />
+  <button
+    onClick={[Function]}
+  >
+    Validate form
+  </button>
+</Fragment>
+`;
+
+exports[`useValidation specs onUpdateForm should pass validation when call to to onUpdateForm with some value and required validator for complex entity 1`] = `
 <Fragment>
   <input
     onChange={[Function]}

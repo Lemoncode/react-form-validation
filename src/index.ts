@@ -18,7 +18,14 @@ export const useValidation = <EntityProps, EntityErrorProps>(
   validation: FormValidation,
   initEntity: EntityProps,
   initEntityError: EntityErrorProps
-): [EntityProps, EntityErrorProps, OnUpdateFieldFn, OnUpdateFormFn] => {
+): [
+  EntityProps,
+  EntityErrorProps,
+  OnUpdateFieldFn,
+  OnUpdateFormFn,
+  React.Dispatch<React.SetStateAction<EntityProps>>,
+  React.Dispatch<React.SetStateAction<EntityErrorProps>>
+] => {
   const [entity, setEntity] = React.useState(initEntity);
   const [entityError, setEntityError] = React.useState(initEntityError);
 
@@ -57,5 +64,12 @@ export const useValidation = <EntityProps, EntityErrorProps>(
     return formValidationResult;
   };
 
-  return [entity, entityError, onUpdateField, onUpdateForm];
+  return [
+    entity,
+    entityError,
+    onUpdateField,
+    onUpdateForm,
+    setEntity,
+    setEntityError,
+  ];
 };

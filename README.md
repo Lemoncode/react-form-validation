@@ -1,4 +1,4 @@
-# @lemoncode/react-form-validation
+# @lemoncode/form-validation-hook
 
 This is a React implementation to  easify using [lc-form-validation](https://github.com/Lemoncode/lcFormValidation).
 
@@ -6,7 +6,7 @@ Please, refer to [lc-form-validation](https://github.com/Lemoncode/lcFormValidat
 
 ## Examples
 
-TODO 
+TODO
 
 ## License
 
