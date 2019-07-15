@@ -51,7 +51,9 @@
     "lint:fix": "prettier --write src/**/*.{ts,tsx,js,jsx} && tslint --project . --fix",
     "prerelease": "npm run lint:fix && npm run test && npm run build",
     "release": "npm publish ./build",
-    "release:local": "npm install ./build -g"
+    "release:local": "npm install ./build -g",
+    "start:doc": "docz dev",
+    "build:doc": "docz build"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -78,6 +80,8 @@
     "compression-webpack-plugin": "^2.0.0",
     "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.0",
     "enzyme-to-json": "^3.3.5",
